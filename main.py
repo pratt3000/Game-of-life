@@ -1,5 +1,4 @@
 import tkinter as tk
-import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import numpy as np
