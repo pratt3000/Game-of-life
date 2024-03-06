@@ -1,4 +1,5 @@
 import tkinter as tk
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import numpy as np
@@ -23,19 +24,16 @@ def update(frame):
     img.set_array(grid)
     return [img]
 
-M, N = 50, 50
-grid = np.random.choice([0, 1], size=(M, N), p=[0.9, 0.1])
+M, N = 500, 500
+grid = np.random.choice([0, 1], size=(M, N), p=[0.95, 0.05])
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(8, 8))
+plt.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)  # Adjust the boundaries as needed
 img = ax.imshow(grid, cmap='gray', interpolation='nearest')
 
 plt.ion()  # Turn on interactive mode
 
-for _ in range(100):
+while True:
     img.set_array(grid)
     grid = next_generation(grid)
-    plt.pause(1)  # Adjust the pause time as needed
-
-plt.ioff()  # Turn off interactive mode
-plt.show()
-
+    plt.pause(0.1)  # Adjust the pause time as needed
